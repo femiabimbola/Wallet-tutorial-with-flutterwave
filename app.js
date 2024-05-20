@@ -17,6 +17,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.status(200).json({msg: "welcome to the wallet"})
+})
+
 app.post("/register", async (req, res) => {
   // Our register logic starts here
   try {
