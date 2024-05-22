@@ -96,12 +96,13 @@ app.post("/login", async (req, res) => {
       // save user token
       user.token = token;
 
-      // user
-      res.status(200).json(user);
+      // user details
+      res.status(200).send(user);
     }
-    res.status(400).send("Invalid Credentials");
+    
   } catch (err) {
     console.log(err);
+    res.status(400).send("Invalid Credentials");
   }
   // Our login logic ends here
 });
