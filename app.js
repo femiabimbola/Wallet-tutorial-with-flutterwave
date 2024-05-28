@@ -111,6 +111,7 @@ app.get("/pay", (req, res) => {
   res.sendFile(path.join(__dirname + "/index.html")); //__dirname : It will resolve to your project folder.
 });
 
+// flutterwave redirecr
 app.get("/response", async (req, res) => {
   const { transaction_id } = req.query;
 
@@ -132,6 +133,7 @@ app.get("/response", async (req, res) => {
 
   // check if transaction id already exist
 
+  console.log(response)
   const transactionExist = await Transaction.findOne({ transactionId: id });
 
   if (transactionExist) {
@@ -140,6 +142,7 @@ app.get("/response", async (req, res) => {
   // check if customer exist in our database
   const user = await User.findOne({ email: customer.email });
 
+  // error dey here
   // check if user have a wallet, else create wallet
   const wallet = await validateUserWallet(user._id);
 
